@@ -116,35 +116,7 @@ describe('ol.source.ImageArcGISRest', function() {
     });
 
   });
-
-    it('sets MAP_RESOLUTION when the server is MapServer', function() {
-      var source = new ol.source.ImageArcGISRest(options);
-      pixelRatio = 2;
-      var image = source.getImage(extent, resolution, pixelRatio, projection);
-      var uri = new goog.Uri(image.src_);
-      var queryData = uri.getQueryData();
-      expect(queryData.get('MAP_RESOLUTION')).to.be('180');
-    });
-
-    it('sets FORMAT_OPTIONS when the server is GeoServer', function() {
-      var source = new ol.source.ImageArcGISRest(options);
-      pixelRatio = 2;
-      var image = source.getImage(extent, resolution, pixelRatio, projection);
-      var uri = new goog.Uri(image.src_);
-      var queryData = uri.getQueryData();
-      expect(queryData.get('FORMAT_OPTIONS')).to.be('dpi:180');
-    });
-
-    it('extends FORMAT_OPTIONS if it is already present', function() {
-      var source = new ol.source.ImageArcGISRest(options);
-      options.params.FORMAT_OPTIONS = 'param1:value1';
-      pixelRatio = 2;
-      var image = source.getImage(extent, resolution, pixelRatio, projection);
-      var uri = new goog.Uri(image.src_);
-      var queryData = uri.getQueryData();
-      expect(queryData.get('FORMAT_OPTIONS')).to.be('param1:value1;dpi:180');
-    });
- 
+  
     it('creates an image with a custom imageLoadFunction', function() {
       var imageLoadFunction = sinon.spy();
       options.imageLoadFunction = imageLoadFunction;
@@ -154,8 +126,6 @@ describe('ol.source.ImageArcGISRest', function() {
       expect(imageLoadFunction).to.be.called();
       expect(imageLoadFunction.calledWith(image, image.src_)).to.be(true);
     });
-
-  });
 
 });
 
