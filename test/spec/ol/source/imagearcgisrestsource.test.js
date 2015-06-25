@@ -29,9 +29,7 @@ describe('ol.source.ImageArcGISRest', function() {
       expect(queryData.get('BBOX')).to.be('20,10,40,30');
 	  expect(queryData.get('F')).to.be('image');
       expect(queryData.get('FORMAT')).to.be('PNG32');
-      expect(queryData.get('HEIGHT')).to.be('100');
       expect(queryData.get('TRANSPARENT')).to.be('true');
-      expect(queryData.get('WIDTH')).to.be('100');
       expect(uri.getFragment()).to.be.empty();
     });
 
